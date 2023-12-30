@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import React from "react";
 
-export default function UsersTable({ rows }) {
-  console.log(rows);
+export default function UsersTable({ rows, selectedUser, deleteUser }) {
+  // console.log(rows);
 
   return (
     <TableContainer component={Paper}>
@@ -38,11 +38,21 @@ export default function UsersTable({ rows }) {
                     {val.name}
                   </TableCell>
                   <TableCell>
-                    <Button sx={{ margin: "0px 1-px" }} onClick={() => {}}>
+                    <Button
+                      sx={{ margin: "0px 1-px" }}
+                      onClick={() => {
+                        selectedUser({ id: val.id, name: val.name });
+                      }}
+                    >
                       {" "}
                       Update
                     </Button>
-                    <Button sx={{ margin: "0px 1-px" }} onClick={() => {}}>
+                    <Button
+                      sx={{ margin: "0px 1-px" }}
+                      onClick={() => {
+                        deleteUser({ id: val.id });
+                      }}
+                    >
                       {" "}
                       Delete
                     </Button>
